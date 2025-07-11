@@ -1,0 +1,11 @@
+# .gitignore
+
+# Bỏ qua file .env
+.env
+
+# Bỏ qua cache của Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
