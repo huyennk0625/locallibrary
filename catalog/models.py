@@ -3,6 +3,9 @@ from django.urls import reverse
 import uuid  # for unique BookInstance IDs
 from . import constants  # constants file
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
+from datetime import date
+
 
 class Genre(models.Model):
 
@@ -29,7 +32,7 @@ class Book(models.Model):
         unique=True,
         help_text=(_('13 Character '
                    '<a href="https://www.isbn-international.org/content/'
-                   'what-isbn">ISBN number</a>'))
+                     'what-isbn">ISBN number</a>'))
     )  # Mã số của sách, unique
     genre = models.ManyToManyField(
         Genre,
@@ -71,9 +74,19 @@ class BookInstance(models.Model):
         help_text=_('Book availability'),
     )
 
+    borrower = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True)
+
+    @property
+    def is_overdue(self):
+        return self.due_back and date.today() > self.due_back
+
     class Meta:
         # Sắp xếp theo hạn trả
         ordering = ['due_back']
+        permissions = (
+            ("can_mark_returned", "Set book as returned"),
+        )
 
     def __str__(self):
         return f'{self.id} ({self.book.title})'
