@@ -6,4 +6,3 @@ urlpatterns = [
     path('book/<int:pk>', views.BookDetailView.as_view(), name='book-detail'),
 ]
 
-
