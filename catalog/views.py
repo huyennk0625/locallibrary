@@ -1,3 +1,5 @@
+from django.views import generic
+from .models import Book
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from catalog.models import Book, Author, BookInstance, Genre
@@ -17,19 +19,23 @@ def index(request):
 
     num_authors = Author.objects.count()
 
+    # Lấy số lượt truy cập từ session (mặc định là 1)
+    num_visits = request.session.get('num_visits', 1)
+
+    # Cập nhật giá trị đó và lưu lại
+    request.session['num_visits'] = num_visits + 1
+
     # Dữ liệu truyền vào template
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
         'num_authors': num_authors,
+        'num_visits': num_visits,
     }
 
     # Trả về template đã render
     return render(request, 'index.html', context=context)
-
-from django.views import generic
-from .models import Book
 
 class BookListView(generic.ListView):
     model = Book
@@ -48,3 +54,4 @@ class BookDetailView(generic.DetailView):
         context['STATUS_MAINTENANCE'] = constants.LOAN_STATUS_MAINTENANCE
         context['status_labels'] = dict(constants.LOAN_STATUS)
         return context
+
