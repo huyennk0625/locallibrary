@@ -27,3 +27,24 @@ def index(request):
 
     # Trả về template đã render
     return render(request, 'index.html', context=context)
+
+from django.views import generic
+from .models import Book
+
+class BookListView(generic.ListView):
+    model = Book
+    paginate_by = constants.BOOK_LIST_VIEW_PAGINATE
+    context_object_name = 'book_list'  # trùng với template mặc định
+    template_name = 'catalog/book_list.html'
+
+class BookDetailView(generic.DetailView):
+    model = Book
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        book = self.get_object()
+        context['copies'] = book.bookinstance_set.all()
+        context['STATUS_AVAILABLE'] = constants.LOAN_STATUS_AVAILABLE
+        context['STATUS_MAINTENANCE'] = constants.LOAN_STATUS_MAINTENANCE
+        context['status_labels'] = dict(constants.LOAN_STATUS)
+        return context

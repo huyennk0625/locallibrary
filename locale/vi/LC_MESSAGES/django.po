@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-16 02:40+0000\n"
+"POT-Creation-Date: 2025-07-17 10:16+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: catalog/constants.py:18
+#: catalog/constants.py:19
 msgid "Maintenance"
 msgstr "Bảo trì"
 
-#: catalog/constants.py:19
+#: catalog/constants.py:20
 msgid "On loan"
 msgstr "Đang cho mượn"
 
-#: catalog/constants.py:20
+#: catalog/constants.py:21
 msgid "Available"
 msgstr "Có sẵn"
 
-#: catalog/constants.py:21
+#: catalog/constants.py:22
 msgid "Reserved"
 msgstr "Đã được đặt trước"
 
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Select a genre for this book"
 msgstr "Chọn thể loại cho cuốn sách này"
 
-#: catalog/models.py:49
+#: catalog/models.py:49 catalog/templates/catalog/book_detail.html:12
 msgid "Genre"
 msgstr "Thể loại"
 
@@ -78,17 +78,77 @@ msgstr "Ngày mất"
 msgid "Local Library"
 msgstr "Thư viện Cộng đồng"
 
-#: catalog/templates/base_generic.html:23
+#: catalog/templates/base_generic.html:22
 msgid "Home"
 msgstr "Trang chủ"
 
-#: catalog/templates/base_generic.html:24
+#: catalog/templates/base_generic.html:23
 msgid "All books"
 msgstr "Tất cả sách"
 
-#: catalog/templates/base_generic.html:25
+#: catalog/templates/base_generic.html:24
 msgid "All authors"
 msgstr "Tất cả tác giả"
+
+#: catalog/templates/base_generic.html:35
+msgid "Previous"
+msgstr "Trước"
+
+#: catalog/templates/base_generic.html:39
+#, python-format
+msgid ""
+"\n"
+"                                Page %(current)s of %(total)s.\n"
+"                            "
+msgstr ""
+"\n"
+"                                Trang %(current)s trong tổng số %(total)s.\n"
+"                            "
+
+#: catalog/templates/base_generic.html:45
+msgid "Next"
+msgstr "Tiếp"
+
+#: catalog/templates/catalog/book_detail.html:6
+msgid "Title"
+msgstr "Tiêu đề"
+
+#: catalog/templates/catalog/book_detail.html:8
+#, fuzzy
+#| msgid "Authors"
+msgid "Author"
+msgstr "Tác giả"
+
+#: catalog/templates/catalog/book_detail.html:9
+msgid "Summary:"
+msgstr "Tóm tắt"
+
+#: catalog/templates/catalog/book_detail.html:10
+#, fuzzy
+#| msgid "ISBN"
+msgid "ISBN:"
+msgstr "Mã ISBN"
+
+#: catalog/templates/catalog/book_detail.html:11
+msgid "Language"
+msgstr "Ngôn ngữ"
+
+#: catalog/templates/catalog/book_detail.html:15
+#: catalog/templates/index.html:18
+msgid "Copies"
+msgstr "Bản sao"
+
+#: catalog/templates/catalog/book_detail.html:24
+msgid "Due to be returned"
+msgstr "Được trả lại"
+
+#: catalog/templates/catalog/book_detail.html:26
+msgid "Imprint"
+msgstr "Tài liệu tham khảo"
+
+#: catalog/templates/catalog/book_detail.html:27
+msgid "ID"
+msgstr "ID"
 
 #: catalog/templates/index.html:5
 #, fuzzy
@@ -104,7 +164,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Chào mừng bạn đến với LocalLibrary, một trang web được phát triển bởi <em>Mạng lưới nhà phát triển Mozilla</em>!\n"
+"      Chào mừng bạn đến với LocalLibrary, một trang web được phát triển bởi "
+"<em>Mạng lưới nhà phát triển Mozilla</em>!\n"
 "    "
 
 #: catalog/templates/index.html:13
@@ -118,10 +179,6 @@ msgstr "Thư viện có số lượng dữ liệu như sau:"
 #: catalog/templates/index.html:17
 msgid "Books"
 msgstr "Sách"
-
-#: catalog/templates/index.html:18
-msgid "Copies"
-msgstr "Bản sao"
 
 #: catalog/templates/index.html:19
 msgid "Copies available"
