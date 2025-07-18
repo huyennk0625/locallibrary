@@ -24,14 +24,6 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
-
-urlpatterns += [
-    path('catalog/', include('catalog.urls')),
-]
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
     path('', RedirectView.as_view(url='catalog/')),
     path('accounts/', include('django.contrib.auth.urls')),
