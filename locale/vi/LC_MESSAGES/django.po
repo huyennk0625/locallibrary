@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-17 17:22+0700\n"
+"POT-Creation-Date: 2025-07-18 12:29+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,21 +18,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: catalog/constants.py:22
+#: catalog/constants.py:24
 msgid "Maintenance"
 msgstr "Bảo trì"
 
-#: catalog/constants.py:23
+#: catalog/constants.py:25
 msgid "On loan"
 msgstr "Đang cho mượn"
 
-#: catalog/constants.py:24
+#: catalog/constants.py:26
 msgid "Available"
 msgstr "Có sẵn"
 
-#: catalog/constants.py:25
+#: catalog/constants.py:27
 msgid "Reserved"
 msgstr "Đã được đặt trước"
+
+#: catalog/forms.py:10
+msgid "Enter a date between now and 4 weeks (default 3)."
+msgstr ""
+
+#: catalog/forms.py:18
+msgid "Invalid date - renewal in past"
+msgstr ""
+
+#: catalog/forms.py:23
+msgid "Invalid date - renewal more than 4 weeks ahead"
+msgstr ""
 
 #: catalog/models.py:15
 msgid "Enter a book genre (e.g. Science Fiction)"
@@ -98,19 +110,23 @@ msgstr "Người dùng:"
 msgid "My Borrowed"
 msgstr "Sách đang muọne"
 
-#: catalog/templates/base_generic.html:33
+#: catalog/templates/base_generic.html:29
+msgid "All Borrowed (Staff)"
+msgstr ""
+
+#: catalog/templates/base_generic.html:36
 msgid "Logout"
 msgstr "Đăng xuất"
 
-#: catalog/templates/base_generic.html:37 templates/registration/login.html:18
+#: catalog/templates/base_generic.html:40 templates/registration/login.html:18
 msgid "Login"
 msgstr "Đăng nhập"
 
-#: catalog/templates/base_generic.html:49
+#: catalog/templates/base_generic.html:52
 msgid "Previous"
 msgstr "Trước"
 
-#: catalog/templates/base_generic.html:53
+#: catalog/templates/base_generic.html:56
 #, python-format
 msgid ""
 "\n"
@@ -121,9 +137,32 @@ msgstr ""
 "                                Trang %(current)s trong tổng số %(total)s.\n"
 "                            "
 
-#: catalog/templates/base_generic.html:59
+#: catalog/templates/base_generic.html:62
 msgid "Next"
 msgstr "Tiếp"
+
+#: catalog/templates/catalog/author_confirm_delete.html:5
+#, fuzzy
+#| msgid "Authors"
+msgid "Delete Author"
+msgstr "Tác giả"
+
+#: catalog/templates/catalog/author_confirm_delete.html:8
+#, python-format
+msgid ""
+"\n"
+"      Are you sure you want to delete the author: %(author_name)s?\n"
+"    "
+msgstr ""
+
+#: catalog/templates/catalog/author_confirm_delete.html:15
+msgid "Yes, delete."
+msgstr ""
+
+#: catalog/templates/catalog/author_form.html:8
+#: catalog/templates/catalog/book_renew_librarian.html:16
+msgid "Submit"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:6
 msgid "Title"
@@ -166,15 +205,64 @@ msgstr "Tài liệu tham khảo"
 msgid "ID"
 msgstr "ID"
 
+#: catalog/templates/catalog/book_renew_librarian.html:5
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:17
+msgid "Renew"
+msgstr ""
+
+#: catalog/templates/catalog/book_renew_librarian.html:6
+#, fuzzy
+#| msgid "My Borrowed"
+msgid "Borrower"
+msgstr "Sách đang muọne"
+
+#: catalog/templates/catalog/book_renew_librarian.html:8
+msgid "Due date"
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_all.html:5
+#, fuzzy
+#| msgid "Borrowed books"
+msgid "All borrowed books"
+msgstr "Sách đang mượn"
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_all.html:12
+#, python-format
+msgid ""
+"\n"
+"            - %(borrower)s (%(due)s)\n"
+"          "
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_all.html:19
+#, fuzzy
+#| msgid "There are no books borrowed."
+msgid "There are no borrowed books."
+msgstr "Không có sách nào được mượn"
+
 #: catalog/templates/catalog/bookinstance_list_borrowed_user.html:4
 msgid "Borrowed books"
 msgstr "Sách đang mượn"
 
-#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:14
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:11
+#, python-format
+msgid ""
+"\n"
+"            (%(due)s)\n"
+"          "
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:16
 msgid "Mark as returned"
 msgstr "Đánh dấu là đã trả"
 
-#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:20
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:21
+#, fuzzy
+#| msgid "Borrowed books"
+msgid "No borrowed books."
+msgstr "Sách đang mượn"
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:25
 msgid "There are no books borrowed."
 msgstr "Không có sách nào được mượn"
 

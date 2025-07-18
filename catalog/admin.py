@@ -50,3 +50,4 @@ class BookInstanceAdmin(admin.ModelAdmin):
         }),
     )
 
+
