@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h1>{% trans "Author List" %}</h1>
+    <ul>
+        {% for author in author_list %}
+        <li>{{ author.last_name }}, {{ author.first_name }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if is_paginated %}
+        <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">{% trans "Previous" %}</a>
+        {% endif %}
+
+        <span>{% blocktrans with current=page_obj.number total=page_obj.paginator.num_pages %}Page {{ current }} of {{ total }}{% endblocktrans %}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">{% trans "Next" %}</a>
+        {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
